@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-navy-950 text-slate-200 antialiased;
+    background-image:
+      radial-gradient(60rem 40rem at 12% -10%, rgba(47, 107, 255, 0.22), transparent 60%),
+      radial-gradient(50rem 35rem at 88% 0%, rgba(34, 211, 238, 0.16), transparent 55%),
+      radial-gradient(45rem 45rem at 50% 110%, rgba(47, 107, 255, 0.12), transparent 60%);
+    background-attachment: fixed;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-cyan-400 ring-offset-2 ring-offset-navy-950;
+  }
+
+  ::selection {
+    @apply bg-cyan-400/30 text-white;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-xl;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.06) inset, 0 20px 50px -30px rgba(0, 0, 0, 0.9);
+  }
+
+  .glass-hover {
+    @apply transition duration-300 hover:border-cyan-400/40 hover:bg-white/[0.07] hover:shadow-glow;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-electric to-cyan-400 px-5 py-3 text-sm font-semibold text-navy-950 transition hover:brightness-110 focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/40 hover:text-white disabled:opacity-50;
+  }
+
+  .label {
+    @apply mb-2 block text-sm font-medium text-slate-300;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-white/10 bg-navy-900/70 p-4 text-sm text-slate-100 placeholder:text-slate-500 focus:border-cyan-400/50;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300;
+  }
+
+  .section-title {
+    @apply text-2xl font-bold tracking-tight text-white sm:text-3xl;
+  }
+
+  .muted {
+    @apply text-sm leading-relaxed text-slate-400;
+  }
+}
+
+.scan-line {
+  background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.85), transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
